@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillTransfer - Aprende habilidades al instante</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header>
+    <div class="wrapper">
+      <div class="header-inner">
+        <div class="brand">
+          <h1>SKILL TRANSFER</h1>
+          <p>Aprendizaje instantaneo y seguro</p>
+        </div>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+        <nav id="mainNav" class="main-nav" aria-label="Navegacion principal">
+          <ul>
+            <li><a href="#inicio" class="nav-active">Inicio</a></li>
+            <li><a href="lista.html">Catalogo</a></li>
+            <li><a href="scanner.html">Escaner</a></li>
+            <li><a href="biblioteca.html">Mi biblioteca</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="firstScanIntro" class="first-scan-section" aria-label="Bienvenida inicial" hidden>
+      <div class="wrapper first-scan-wrapper">
+        <div class="first-scan-card">
+          <div class="first-scan-gallery" aria-label="Ejemplos de habilidades">
+            <button class="gallery-arrow" type="button" aria-label="Imagen anterior">‹</button>
+
+            <div class="skill-photo-frame">
+              <div class="skill-photo skill-photo--active">
+                <img src="images/skills/organizacion-trabajos.jpg" alt="Personas en clase representando la habilidad organización de trabajos">
+                <span class="skill-photo-text">Organización de trabajos</span>
+              </div>
+
+              <div class="skill-photo">
+                <img src="images/skills/cocina-basica.jpg" alt="Persona cocinando representando la habilidad cocina básica">
+                <span class="skill-photo-text">Cocina básica</span>
+              </div>
+
+              <div class="skill-photo">
+                <img src="images/skills/yoga.jpg" alt="Persona practicando yoga frente al mar">
+                <span class="skill-photo-text">Yoga</span>
+              </div>
+
+              <div class="skill-photo">
+                <img src="images/skills/atletismo.jpg" alt="Personas corriendo en pista representando la habilidad atletismo">
+                <span class="skill-photo-text">Atletismo</span>
+              </div>
+
+              <div class="skill-photo">
+                <img src="images/skills/idioma-frances.jpg" alt="Vista de París representando la habilidad idioma francés">
+                <span class="skill-photo-text">Idioma francés</span>
+              </div>
+
+              <div class="skill-photo">
+                <img src="images/skills/programacion-c.jpg" alt="Persona programando en un escritorio">
+                <span class="skill-photo-text">Programación en C</span>
+              </div>
+
+              <div class="skill-photo">
+                <img src="images/skills/dibujo-lapiz.jpg" alt="Persona dibujando a lápiz en una mesa de trabajo">
+                <span class="skill-photo-text">Dibujo a lápiz</span>
+              </div>
+            </div>
+
+            <button class="gallery-arrow" type="button" aria-label="Imagen siguiente">›</button>
+          </div>
+
+          <div class="first-scan-copy">
+            <p class="section-label">Primer acceso</p>
+            <h2>¡Aprende habilidades en segundos!</h2>
+            <p>
+              Para empezar, SkillTransfer necesita analizar tu perfil cerebral.
+              Así detectamos qué habilidades ya tienes integradas y después podrás
+              completar tu biblioteca desde el catálogo.
+            </p>
+            <div class="first-scan-flow" aria-label="Recorrido inicial">
+              <span>1. Escanea tu cerebro</span>
+              <span>2. Mira tus habilidades detectadas</span>
+              <span>3. Completa tu perfil en el catálogo</span>
+            </div>
+            <a href="scanner.html" class="btn-primary first-scan-btn" id="firstScanBtn">Empezar escaneo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inicio" class="hero-section" aria-label="Seccion principal">
+      <div class="wrapper">
+        <div class="hero">
+          <div class="hero-text">
+            <p class="section-label">EL FUTURO DEL APRENDIZAJE</p>
+            <h2>ACTIVA UNA HABILIDAD EN SEGUNDOS</h2>
+            <p>
+              SkillTransfer elimina las barreras del aprendizaje tradicional: sin meses de estudio,
+              sin bloqueos por falta de tiempo y sin miedo a no poder conseguirlo.
+            </p>
+            <div class="hero-actions">
+              <a href="lista.html" class="btn-primary" id="catalogoBtn">Explorar catalogo</a>
+              <a href="scanner.html" class="btn-outline">Iniciar escaner</a>
+            </div>
+            <div class="status-badge" role="status" aria-live="polite">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span id="statusText">Sistema listo para transferir conocimiento</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">+200</span>
+            <span class="stat-label">Habilidades disponibles</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number">&lt;15s</span>
+            <span class="stat-label">Tiempo medio de transferencia</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Usuarios satisfechos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="section-how" aria-labelledby="h-como">
+      <div class="wrapper">
+        <p class="section-label">PROCESO</p>
+        <h2 class="section-title" id="h-como">Como funciona SkillTransfer</h2>
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">01</div>
+            <h3>Selecciona una habilidad</h3>
+            <p>Elige lo que quieres dominar desde el catalogo completo de capacidades.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">02</div>
+            <h3>Analizamos tu perfil</h3>
+            <p>El escaner adapta la transferencia a tu contexto y objetivos reales.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">03</div>
+            <h3>Recibes la habilidad</h3>
+            <p>En segundos queda integrada como si la hubieras practicado durante anos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades" class="section-skills" aria-labelledby="h-skills">
+      <div class="wrapper">
+        <div class="section-header-row">
+          <div>
+            <p class="section-label">CATALOGO</p>
+            <h2 class="section-title" id="h-skills">Habilidades destacadas</h2>
+          </div>
+          <a href="lista.html" class="btn-outline">Ver todas</a>
+        </div>
+
+        <div class="skills-grid" role="list">
+          <div class="skill-card" role="listitem" tabindex="0" data-href="lista.html">
+            <div class="skill-icon">🗣</div>
+            <span class="skill-name">Ingles B2</span>
+            <span class="skill-time">8 segundos</span>
+          </div>
+          <div class="skill-card" role="listitem" tabindex="0" data-href="lista.html">
+            <div class="skill-icon">💻</div>
+            <span class="skill-name">Python basico</span>
+            <span class="skill-time">12 segundos</span>
+          </div>
+          <div class="skill-card" role="listitem" tabindex="0" data-href="lista.html">
+            <div class="skill-icon">🎵</div>
+            <span class="skill-name">Lectura musical</span>
+            <span class="skill-time">15 segundos</span>
+          </div>
+          <div class="skill-card" role="listitem" tabindex="0" data-href="lista.html">
+            <div class="skill-icon">🎤</div>
+            <span class="skill-name">Oratoria publica</span>
+            <span class="skill-time">10 segundos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" aria-labelledby="h-contacto">
+      <div class="wrapper">
+        <p class="section-label">CONTACTO</p>
+        <h2 class="section-title" id="h-contacto">Quieres saber mas?</h2>
+        <div class="contact-card">
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name">
+              <span class="field-error" id="err-nombre"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electronico</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email">
+              <span class="field-error" id="err-email"></span>
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Escribe tu consulta aqui..."></textarea>
+              <span class="field-error" id="err-mensaje"></span>
+            </div>
+            <button type="submit" class="btn-primary">Enviar mensaje</button>
+            <p class="form-success" id="formSuccess" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrapper">
+      <div class="footer-inner">
+        <span class="footer-brand">SKILL TRANSFER</span>
+        <nav class="footer-nav" aria-label="Navegacion secundaria">
+          <a href="index.html">Inicio</a>
+          <a href="lista.html">Catalogo</a>
+          <a href="scanner.html">Escaner</a>
+          <a href="biblioteca.html">Biblioteca</a>
+        </nav>
+        <span class="footer-copy">Proyecto IPO - USAL 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script/script.js"></script>
+</body>
+</html>

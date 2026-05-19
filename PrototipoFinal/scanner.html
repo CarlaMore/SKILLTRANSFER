@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escaner de perfil - SkillTransfer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/scanner.css">
+</head>
+<body>
+
+  <header>
+    <div class="wrapper">
+      <div class="header-inner">
+        <div class="brand">
+          <a href="index.html" class="brand-link"><h1>SKILL TRANSFER</h1></a>
+          <p>Aprendizaje instantaneo y seguro</p>
+        </div>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+        <nav id="mainNav" class="main-nav" aria-label="Navegación principal">
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="lista.html">Catálogo</a></li>
+            <li><a href="scanner.html" class="nav-active">Escáner</a></li>
+            <li><a href="biblioteca.html">Mi biblioteca</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PANTALLA 1: Formulario previo al escaneo -->
+    <div id="screenForm" class="scanner-screen">
+      <div class="wrapper scanner-center">
+        <p class="section-label">Análisis de perfil</p>
+        <h2 class="section-title">Escáner neuronal</h2>
+        <p class="scanner-intro">
+          Antes de iniciar el escaneo, cuéntanos un poco sobre ti.
+          El sistema analiza tus datos para identificar tus habilidades actuales
+          y recomendarte las más adecuadas.
+        </p>
+
+        <form id="scanForm" class="scan-form" novalidate>
+          <div class="scan-form-grid">
+            <div class="form-group">
+              <label for="scan-nombre">Nombre</label>
+              <input type="text" id="scan-nombre" placeholder="Tu nombre" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="scan-edad">Edad</label>
+              <input type="number" id="scan-edad" placeholder="Ej: 24" min="10" max="99">
+            </div>
+            <div class="form-group">
+              <label for="scan-ocupacion">Ocupación</label>
+              <input type="text" id="scan-ocupacion" placeholder="Ej: Estudiante, diseñador…">
+            </div>
+            <div class="form-group">
+              <label for="scan-objetivo">¿Qué quieres lograr?</label>
+              <input type="text" id="scan-objetivo" placeholder="Ej: Mejorar mi inglés, aprender a programar…">
+            </div>
+          </div>
+
+          <p class="section-label" style="margin-top:24px;">Áreas de interés</p>
+          <!-- Gestalt: similitud — todas las tarjetas de interés tienen la misma forma -->
+          <div class="interest-grid" id="interestGrid" role="group" aria-label="Selecciona tus áreas de interés">
+            <button type="button" class="interest-chip" data-cat="idiomas">🗣 Idiomas</button>
+            <button type="button" class="interest-chip" data-cat="tecnologia">💻 Tecnología</button>
+            <button type="button" class="interest-chip" data-cat="musica">🎵 Música</button>
+            <button type="button" class="interest-chip" data-cat="comunicacion">🎤 Comunicación</button>
+            <button type="button" class="interest-chip" data-cat="cocina">🍳 Cocina</button>
+            <button type="button" class="interest-chip" data-cat="deporte">⚽ Deporte</button>
+            <button type="button" class="interest-chip" data-cat="arte">🎨 Arte</button>
+            <button type="button" class="interest-chip" data-cat="bienestar">🧘 Bienestar</button>
+            <button type="button" class="interest-chip" data-cat="profesional">📑 Profesional</button>
+          </div>
+          <p class="field-error" id="err-intereses"></p>
+
+          <button type="submit" class="btn-primary scan-btn" id="startScan">
+            ⚡ Iniciar escaneo neuronal
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- PANTALLA 2: Animación de escaneo -->
+    <div id="screenScan" class="scanner-screen" hidden>
+      <div class="wrapper scanner-center">
+        <div class="scan-visual" aria-live="polite" aria-label="Escaneando perfil">
+          <!-- Figura central — Gestalt: pregnancia, el círculo es la forma más reconocible -->
+          <div class="scan-ring-wrap">
+            <div class="scan-ring scan-ring--outer"></div>
+            <div class="scan-ring scan-ring--mid"></div>
+            <div class="scan-ring scan-ring--inner"></div>
+            <div class="scan-core">
+              <span class="scan-core-icon">🧠</span>
+            </div>
+            <!-- Línea de barrido — refuerza la metáfora de escáner -->
+            <div class="scan-beam" aria-hidden="true"></div>
+          </div>
+
+          <!-- Registro de actividad — Gestalt: continuidad (líneas de texto fluyen de arriba abajo) -->
+          <div class="scan-log" id="scanLog" aria-live="polite">
+            <p class="scan-log-line" id="logLine">Iniciando análisis neuronal…</p>
+          </div>
+
+          <!-- Barra de progreso -->
+          <div class="scan-progress-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="scanProgressWrap">
+            <div class="scan-progress-bar" id="scanProgressBar"></div>
+          </div>
+          <p class="scan-progress-label" id="scanProgressLabel">0%</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANTALLA 3: Resultados del escaneo -->
+    <div id="screenResults" class="scanner-screen" hidden>
+      <div class="wrapper">
+        <div class="results-header">
+          <p class="section-label">Análisis completado</p>
+          <h2 class="section-title" id="resultsTitle">Perfil neuronal de <span id="nombreResultado"></span></h2>
+          <p class="scanner-intro">El sistema ha detectado tu perfil cognitivo y tus habilidades actuales.</p>
+        </div>
+
+        <!-- Parámetros del perfil — Gestalt: similitud + proximidad -->
+        <div class="params-grid" id="paramsGrid"></div>
+
+        <!-- Habilidades detectadas -->
+        <div class="results-section">
+          <p class="section-label">Habilidades detectadas</p>
+          <h3 class="results-subtitle">Ya las tienes integradas</h3>
+          <div class="detected-grid" id="detectedGrid" role="list"></div>
+        </div>
+
+        <!-- Recomendaciones -->
+        <div class="results-section">
+          <p class="section-label">Recomendaciones</p>
+          <h3 class="results-subtitle">Las más adecuadas para tu perfil</h3>
+          <div class="detected-grid" id="recoGrid" role="list"></div>
+        </div>
+
+        <div class="results-actions">
+          <a href="biblioteca.html" class="btn-primary">📚 Ver mi biblioteca</a>
+          <a href="lista.html" class="btn-outline">🔍 Explorar catálogo completo</a>
+          <button class="btn-outline" id="btnReScan">↺ Repetir escaneo</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="wrapper">
+      <div class="footer-inner">
+        <span class="footer-brand">SKILL TRANSFER</span>
+        <nav class="footer-nav" aria-label="Navegación secundaria">
+          <a href="index.html">Inicio</a>
+          <a href="lista.html">Catálogo</a>
+          <a href="scanner.html">Escáner</a>
+          <a href="biblioteca.html">Mi biblioteca</a>
+        </nav>
+        <span class="footer-copy">Proyecto IPO - USAL 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script/script.js"></script>
+  <script src="script/scanner.js"></script>
+</body>
+</html>

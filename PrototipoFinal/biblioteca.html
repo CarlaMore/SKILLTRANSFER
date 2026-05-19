@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi biblioteca - SkillTransfer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/biblioteca.css">
+</head>
+<body>
+
+  <header>
+    <div class="wrapper">
+      <div class="header-inner">
+        <div class="brand">
+          <a href="index.html" class="brand-link"><h1>SKILL TRANSFER</h1></a>
+          <p>Aprendizaje instantaneo y seguro</p>
+        </div>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+        <nav id="mainNav" class="main-nav" aria-label="Navegación principal">
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="lista.html">Catálogo</a></li>
+            <li><a href="scanner.html">Escáner</a></li>
+            <li><a href="biblioteca.html" class="nav-active">Mi biblioteca</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="bib-hero" aria-labelledby="h-bib">
+      <div class="wrapper">
+        <div class="bib-hero-inner">
+          <div>
+            <p class="section-label">Tu colección</p>
+            <h2 class="section-title" id="h-bib">Mi biblioteca de habilidades</h2>
+            <p class="bib-subtitle">Aquí encontrarás todas las habilidades que has adquirido o que el escáner detectó en tu perfil.</p>
+          </div>
+
+          <div class="bib-summary-card">
+            <div class="bib-summary-item">
+              <span class="bib-summary-num" id="totalCount">0</span>
+              <span class="bib-summary-label">Instaladas</span>
+            </div>
+            <div class="bib-summary-divider"></div>
+            <div class="bib-summary-item">
+              <span class="bib-summary-num" id="catCount">0</span>
+              <span class="bib-summary-label">Totales</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bib-grid-section" aria-labelledby="h-bib">
+      <div class="wrapper">
+
+        <div class="bib-empty" id="bibEmpty" hidden>
+          <div class="bib-empty-icon" aria-hidden="true">📚</div>
+          <h3>Tu biblioteca está vacía</h3>
+          <p>Usa el escáner para detectar tus habilidades actuales o adquiere nuevas desde el catálogo.</p>
+          <div class="bib-empty-actions">
+            <a href="scanner.html" class="btn-primary">⚡ Ir al escáner</a>
+            <a href="lista.html" class="btn-outline">Ver catálogo</a>
+          </div>
+        </div>
+
+        <div id="bibContent" hidden>
+          <div id="bibGroups"></div>
+
+          <div class="bib-installed-panel">
+            <div class="plans-card">
+              <h4 class="plans-title">Planes de expansión</h4>
+              <div id="plansPlaceholder" style="margin-top:8px;color:var(--muted);font-size:14px;">Pulsa <strong>+</strong> en Espacio cerebral para ver los planes.</div>
+            </div>
+
+            <div class="bib-capacity-card" aria-live="polite">
+              <h3>Espacio cerebral</h3>
+              <button class="expand-plans-btn" id="expandPlansBtn" aria-label="Mostrar planes">+</button>
+              <p class="bib-capacity-main"><span id="brainPercent">100%</span> libre</p>
+              <p class="bib-capacity-sub"><span id="brainUsed">0</span> MB / <span id="brainTotal">600</span> MB usados</p>
+              <div class="memory-bar-container" aria-hidden="true">
+                <div class="memory-bar-fill" id="brainBar"></div>
+              </div>
+            </div>
+
+            <div id="installedSection">
+              <h3 class="section-label">Habilidades instaladas</h3>
+              <div id="installedList" class="bib-cards"></div>
+            </div>
+          </div>
+
+          <details class="almacen-panel" id="almacenPanel">
+            <summary class="almacen-summary">VER MI ALMACÉN DE HABILIDADES</summary>
+            <div id="almacenList" class="bib-cards" style="margin-top:12px;"></div>
+          </details>
+
+          <div class="bib-footer-actions">
+            <a href="lista.html" class="btn-outline">+ Adquirir más habilidades</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div class="confirm-overlay" id="confirmOverlay" hidden>
+    <div class="confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="confirm-icon">🧠</div>
+      <h3 id="confirmTitle">Eliminar habilidad</h3>
+      <p id="confirmText">¿Seguro que quieres eliminar esta habilidad de tu biblioteca?</p>
+      <div class="confirm-actions">
+        <button type="button" class="btn-outline" id="confirmCancel">CANCELAR</button>
+        <button type="button" class="btn-danger" id="confirmAccept">ELIMINAR</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="plan-overlay" id="planOverlay" hidden>
+    <div class="plan-card-modal" role="dialog" aria-modal="true">
+      <div class="plan-select" id="planSelect">
+        <h3>Planes de expansión</h3>
+        <div class="plans-grid" id="plansGrid">
+          <button class="plan-card" data-total="600" aria-pressed="true">Mentalidad Base<br><span class="plan-size">600 MB</span><span class="plan-price">0 €/mes</span><span class="plan-action">ACTIVO</span></button>
+          <button class="plan-card" data-total="1000" aria-pressed="false">Mente Activa<br><span class="plan-size">1 GB</span><span class="plan-price">4.99 €/mes</span><span class="plan-action">SELECCIONAR</span></button>
+          <button class="plan-card" data-total="2000" aria-pressed="false">Conocimiento Ilimitado<br><span class="plan-size">2 GB</span><span class="plan-price">9.99 €/mes</span><span class="plan-action">SELECCIONAR</span></button>
+        </div>
+        <div style="margin-top:12px;text-align:center;"><button class="btn-outline" id="planCancelBtn">CANCELAR</button></div>
+      </div>
+      <div class="plan-confirm" id="planConfirm" hidden>
+        <h3 id="planModalTitle">Activar plan</h3>
+        <p id="planModalPrice" class="plan-modal-price">4.99 €/mes</p>
+        <p id="planModalText" class="plan-modal-text">Amplía tu espacio cerebral y guarda más habilidades.</p>
+        <div class="plan-actions">
+          <button class="btn-primary" id="planConfirmBtn">CONFIRMAR CAMBIO</button>
+          <button class="btn-outline" id="planCancelBtnConfirm">CANCELAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
+      <div class="modal-icon" id="modalIcon"></div>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-cat" id="modalCat"></p>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-transfer" id="modalTransfer" hidden>
+        <div class="transfer-circle" id="transferCircle">
+          <div class="transfer-spinner" aria-hidden="true"></div>
+          <div class="transfer-glow"></div>
+          <span id="transferPercent">0%</span>
+        </div>
+        <div class="transfer-bubble-layer" id="transferBubbleLayer" aria-hidden="true"></div>
+        <p id="transferText">Descargando habilidad...</p>
+      </div>
+      <p class="modal-owned-note" id="modalOwnedNote" hidden>Esta habilidad ya esta integrada en tu biblioteca.</p>
+      <button class="btn-primary modal-cta" id="modalCta">⚡ Descargar habilidad</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrapper">
+      <div class="footer-inner">
+        <span class="footer-brand">SKILL TRANSFER</span>
+        <nav class="footer-nav" aria-label="Navegación secundaria">
+          <a href="index.html">Inicio</a>
+          <a href="lista.html">Catálogo</a>
+          <a href="scanner.html">Escáner</a>
+          <a href="biblioteca.html">Mi biblioteca</a>
+        </nav>
+        <span class="footer-copy">Proyecto IPO - USAL 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script/script.js"></script>
+  <script src="script/biblioteca.js"></script>
+</body>
+</html>
